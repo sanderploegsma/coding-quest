@@ -3,7 +3,8 @@ package com.github.sanderploegsma.codingquest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-val example = """
+class Year2022Day01Test {
+    private val example = """
 1504
 1592
 1565
@@ -186,9 +187,8 @@ val example = """
 1578
 """.trim()
 
-const val answer = 10
+    private val answer = 10
 
-class Year2022Day01Test {
     @Test
     fun testAnswer() {
         assertEquals(answer, Year2022Day01.solve(example))
