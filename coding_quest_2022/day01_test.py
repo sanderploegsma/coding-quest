@@ -1,10 +1,10 @@
-package com.github.sanderploegsma.codingquest
+import io
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import pytest
 
-class Year2022Day01Test {
-    private val example = """
+from coding_quest_2022.day01 import solve
+
+EXAMPLE = """\
 1504
 1592
 1565
@@ -185,12 +185,13 @@ class Year2022Day01Test {
 1152
 1516
 1578
-""".trim()
+"""
 
-    private val answer = 10
 
-    @Test
-    fun testAnswer() {
-        assertEquals(answer, Year2022Day01.solve(example))
-    }
-}
+@pytest.fixture
+def example():
+    return io.StringIO(EXAMPLE)
+
+
+def test_example(example):
+    assert solve(example) == 10

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "coding-quest"
+version = "0.1.0"
+description = "Solutions to codingquest.io"
+authors = ["Sander Ploegsma <sanderploegsma@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.4"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
