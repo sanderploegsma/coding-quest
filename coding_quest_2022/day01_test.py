@@ -1,8 +1,6 @@
 import io
 
-import pytest
-
-from coding_quest_2022.day01 import solve
+from coding_quest_2022 import day01
 
 EXAMPLE = """\
 1504
@@ -188,10 +186,5 @@ EXAMPLE = """\
 """
 
 
-@pytest.fixture
-def example():
-    return io.StringIO(EXAMPLE)
-
-
-def test_example(example):
-    assert solve(example) == 10
+def test_example():
+    assert day01.solve(io.StringIO(EXAMPLE)) == 10
