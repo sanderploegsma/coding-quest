@@ -2,14 +2,16 @@ import sys
 from statistics import mean
 from typing import TextIO
 
+from coding_quest import windowed
+
 WINDOW_SIZE = 60
 
 
 def solve(file: TextIO):
     count = 0
     samples = list(int(value) for value in file.readlines())
-    for i in range(len(samples) - WINDOW_SIZE + 1):
-        avg = mean(samples[i : i + WINDOW_SIZE])
+    for window in windowed(samples, window_size=60):
+        avg = mean(window)
         if avg < 1500 or avg > 1600:
             count += 1
     return count
