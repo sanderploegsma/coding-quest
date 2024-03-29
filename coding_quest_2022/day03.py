@@ -1,20 +1,14 @@
 import sys
 from typing import TextIO
-import math
 
-from coding_quest import windowed, squared
+from coding_quest import windowed, distance_3d
 
 
 def solve(file: TextIO):
-    def distance(a: tuple[int, int, int], b: tuple[int, int, int]):
-        return int(
-            math.sqrt(
-                squared(b[0] - a[0]) + squared(b[1] - a[1]) + squared(b[2] - a[2])
-            )
-        )
-
     coordinates = list(tuple(map(int, line.split())) for line in file.readlines())
-    return sum(distance(*window) for window in windowed(coordinates, window_size=2))
+    return sum(
+        int(distance_3d(*window)) for window in windowed(coordinates, window_size=2)
+    )
 
 
 def main():

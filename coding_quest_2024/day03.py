@@ -13,7 +13,7 @@ def solve(file: TextIO, width=100):
 
     formatted = ""
     for i in range(0, len(result), width):
-        formatted += result[i: i + width] + "\n"
+        formatted += result[i : i + width] + "\n"
 
     return formatted
 
