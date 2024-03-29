@@ -6,11 +6,15 @@ authors = ["Sander Ploegsma <sanderploegsma@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 
+[tool.poetry.scripts]
+generate = "coding_quest.generate:main"
+
 [tool.poetry.dependencies]
 python = "^3.12"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.4"
+jinja2 = "^3.1.3"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.1.1"

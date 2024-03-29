@@ -1,0 +1,21 @@
+"""
+Coding Quest: {{ year }}/{{ day }}.
+"""
+
+import sys
+from typing import TextIO
+
+
+def solve(file: TextIO):
+    pass
+
+
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Answer:", solve(file))
+
+
+if __name__ == "__main__":
+    main()
