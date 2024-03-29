@@ -1,7 +1,7 @@
 import sys
 from typing import TextIO
 
-from coding_quest import windowed, distance_3d
+from coding_quest import distance_3d, windowed
 
 
 def solve(file: TextIO):

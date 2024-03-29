@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import os
 import argparse
+import os
 
 from jinja2 import Environment
 
@@ -17,7 +17,7 @@ def generate(year: int, day: int):
 
     def generate_file(template_name: str, output_name: str):
         with open(
-            os.path.join(TEMPLATE_DIR, template_name), "r", encoding="utf-8"
+            os.path.join(TEMPLATE_DIR, template_name), encoding="utf-8"
         ) as f:
             template = env.from_string(f.read())
 
