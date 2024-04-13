@@ -16,9 +16,7 @@ def generate(year: int, day: int):
     env = Environment(autoescape=False, optimized=False)
 
     def generate_file(template_name: str, output_name: str):
-        with open(
-            os.path.join(TEMPLATE_DIR, template_name), encoding="utf-8"
-        ) as f:
+        with open(os.path.join(TEMPLATE_DIR, template_name), encoding="utf-8") as f:
             template = env.from_string(f.read())
 
         with open(os.path.join(output_dir, output_name), "x", encoding="utf-8") as f:
