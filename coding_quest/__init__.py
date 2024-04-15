@@ -20,3 +20,12 @@ def distance_3d(a: Coordinate3D, b: Coordinate3D):
 def windowed(items: list, window_size: int):
     for i in range(len(items) - window_size + 1):
         yield items[i : i + window_size]
+
+
+def display(grid: list[list], on: str = "#", off: str = "."):
+    result = ""
+    for row in grid:
+        for pixel in row:
+            result += on if pixel else off
+        result += "\n"
+    return result
