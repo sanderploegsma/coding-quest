@@ -6,6 +6,8 @@ import sys
 from hashlib import sha256
 from typing import TextIO
 
+from alive_progress import alive_bar
+
 
 def parse(line: str):
     fields = line.strip().split("|")
@@ -18,20 +20,28 @@ def next_hash(desc: str, num: int, hash_: str):
     return hasher.hexdigest()
 
 
+def mine(desc: str, current_hash: str):
+    hash_ = ""
+    num = 0
+    while not hash_.startswith("0" * 6):
+        num += 1
+        hash_ = next_hash(desc, num, current_hash)
+
+    return hash_
+
+
 def solve(file: TextIO):
     current_hash = "0" * 64
-    for desc, num, hash_ in map(parse, file.readlines()):
-        if next_hash(desc, num, current_hash) == hash_:
-            print("Record valid:", desc)
-            current_hash = hash_
-        else:
-            print("Record invalid:", desc)
-            hash_ = ""
-            num = 0
-            while not hash_.startswith("0" * 6):
-                num += 1
-                hash_ = next_hash(desc, num, current_hash)
-            current_hash = hash_
+    records = list(map(parse, file.readlines()))
+    with alive_bar(len(records)) as bar:
+        for desc, num, hash_ in records:
+            bar.text(f"Processing item: {desc}")
+            if next_hash(desc, num, current_hash) == hash_:
+                current_hash = hash_
+                bar(skipped=True)
+            else:
+                current_hash = mine(desc, current_hash)
+                bar()
 
     return current_hash
 
