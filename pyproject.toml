@@ -11,7 +11,7 @@ generate = "coding_quest.generate:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-alive-progress = "^3.1.5"
+alive-progress = "^3.2.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.7.1"
